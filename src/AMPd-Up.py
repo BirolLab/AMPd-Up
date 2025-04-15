@@ -240,6 +240,9 @@ def main():
     parser.add_argument('-fm', '--from_model', help="Directory of the existing models;\
                         only specify this argument if you want to sample from existing models (optional)", 
                         required=False)
+    parser.add_argument('-tr', '--amp_train', help="Directory of training data (fasta format);\
+                        only specify this argument if you want to train AMPd-Up with your own data (optional)",
+                        required=False)
     parser.add_argument('-n', '--num_seq', help="Number of sequences to sample", 
                         type=check_positive_integer, required=True)
     parser.add_argument('-sm', '--save_model', help="Prefix of the models if you want to save them;\
@@ -310,7 +313,12 @@ def main():
         print("Sampling by training new models. %s models required.\n"%n_model)
         
         # read training data
-        train_dir = os.path.dirname(os.path.dirname(os.path.realpath(__file__)))+'/data/training/APD3_ABP_20190320.fa'
+        if args.amp_train is not None:
+            train_dir = args.amp_train
+        else:
+            train_dir = os.path.dirname(os.path.dirname(os.path.realpath(__file__)))+'/data/training/APD3_ABP_20190320.fa'
+        print("Training data: " + os.path.realpath(train_dir) + "\n")
+        
         train_seq = []
         for seq_record in SeqIO.parse(train_dir, 'fasta'):
             train_seq.append(str(seq_record.seq))

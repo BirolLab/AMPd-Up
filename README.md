@@ -57,6 +57,10 @@ optional arguments:
                         Directory of the existing models; only specify this
                         argument if you want to sample from existing models
                         (optional)
+  -tr AMP_TRAIN, --amp_train AMP_TRAIN
+                        Directory of training data (fasta format); only
+                        specify this argument if you want to train AMPd-Up
+                        with your own data (optional)
   -n NUM_SEQ, --num_seq NUM_SEQ
                         Number of sequences to sample
   -sm SAVE_MODEL, --save_model SAVE_MODEL
