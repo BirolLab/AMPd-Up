@@ -78,7 +78,7 @@ Examples:
 
 ### Author
 
-Chenkai Li (cli@bcgsc.ca)
+Chenkai Li (chenkai.li@ubc.ca)
 
 ### Contact
 
